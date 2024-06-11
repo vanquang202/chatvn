@@ -56,3 +56,24 @@
         .text-m {
             color: rgb(255, 7, 144);
         }
+
+        .noti{
+            position: absolute;
+            text-wrap: nowrap;
+            animation-name: ad;
+            animation-duration: 10s;
+            animation-direction: alternate;
+            right: -500px;
+            top: 10vh;
+        }
+
+        @keyframes ad {
+            0% {  }
+            40% {
+                right: 40%;
+            }
+            60% {
+                right: 50%;
+            }
+            100% {right: 3000px;}
+        }

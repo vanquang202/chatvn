@@ -34,6 +34,14 @@
         }
         window.users = window.users.filter((u) => u.id != ul.id);
         getUserOnline();
+      })
+      .listenForWhisper("noti", (event) => {
+        let html = `<div class="noti bg-m text-white px-2">${
+          event.user.name
+        } giới tính ${
+          event.user.gender == 1 ? "nam" : "nữ"
+        } đang ghép nối</div>`;
+        $("#load").append(html);
       });
   } catch (error) {
     location.reload();
@@ -75,6 +83,7 @@
       toastr.warning("Bạn chưa nhập tên");
       return;
     }
+    echo.whisper("noti", { user: user });
     $(".btsmc").removeClass("d-none");
 
     $(".btsm").html(
