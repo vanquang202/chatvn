@@ -144,7 +144,7 @@
           $(".ws").html("Đối phương đã ngắt kết nối !");
         });
       $(".leave").on("click", function () {
-        location.reload();
+        window.location.href = "https://chat.jimdev.id.vn/";
       });
       function renderChat(chat) {
         let html = "";
