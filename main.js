@@ -3,6 +3,7 @@
   let isOk = false;
   let uFr;
   let idFr;
+  let echo;
   window.users;
   user.uid = generateRandomUID(0, 99999999);
   window.Echo = new Echo({
@@ -15,24 +16,28 @@
       },
     },
   });
-  let echo = window.Echo.join("chat")
-    .here((users) => {
-      window.users = users;
-      getUserOnline();
-    })
-    .joining((uj) => {
-      window.users.push(uj);
-      getUserOnline();
-    })
-    .leaving((ul) => {
-      if (ul.id == idFr) {
-        uFr = null;
-        idFr = null;
-        $(".ws").html("Đối phương đã ngắt kết nối !");
-      }
-      window.users = window.users.filter((u) => u.id != ul.id);
-      getUserOnline();
-    });
+  try {
+    echo = window.Echo.join("chat")
+      .here((users) => {
+        window.users = users;
+        getUserOnline();
+      })
+      .joining((uj) => {
+        window.users.push(uj);
+        getUserOnline();
+      })
+      .leaving((ul) => {
+        if (ul.id == idFr) {
+          uFr = null;
+          idFr = null;
+          $(".ws").html("Đối phương đã ngắt kết nối !");
+        }
+        window.users = window.users.filter((u) => u.id != ul.id);
+        getUserOnline();
+      });
+  } catch (error) {
+    location.reload();
+  }
   $(".ip").on("input", function () {
     user.name = $(this).val();
     if (user.name.trim() == "") {
@@ -91,6 +96,9 @@
   function userConnect() {
     $(".ws").html("");
     function createRoomChat(uID) {
+      $("#m").prepend(
+        `<p class="text-center text-m">Bạn đang chát với ${uFr.name}</p>`
+      );
       $(".leave").removeClass("d-none");
       idFr = uID;
       dataChat = [];
