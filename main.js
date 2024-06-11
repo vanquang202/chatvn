@@ -77,7 +77,9 @@
     );
     user.isFind = true;
     user.isProcess = false;
-
+    const audio = document.createElement("video");
+    audio.src = "./notification.mp3";
+    audio.play();
     userConnect();
   });
   $(".btsmc").on("click", function () {
