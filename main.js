@@ -38,9 +38,9 @@
       .listenForWhisper("noti", (event) => {
         let html = `<div class="noti bg-m text-white px-2">${
           event.user.name
-        } giới tính ${
-          event.user.gender == 1 ? "nam" : "nữ"
-        } đang ghép nối</div>`;
+        } gender ${
+          event.user.gender == 1 ? "Male" : "Female"
+        } connecting</div>`;
         $("#load").append(html);
       });
   } catch (error) {
@@ -64,7 +64,42 @@
     $(this).addClass("border-m border-3 text-m");
     user.gender = $(this).data("gender");
   });
+  function generateRandomName() {
+    const firstNames = [
+      "John",
+      "Emma",
+      "Michael",
+      "Sophia",
+      "Matthew",
+      "Olivia",
+      "Daniel",
+      "Ava",
+      "David",
+      "Isabella",
+    ];
+    const lastNames = [
+      "Smith",
+      "Johnson",
+      "Williams",
+      "Brown",
+      "Jones",
+      "Miller",
+      "Davis",
+      "Garcia",
+      "Wilson",
+      "Anderson",
+    ];
 
+    const randomFirstName =
+      firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLastName =
+      lastNames[Math.floor(Math.random() * lastNames.length)];
+
+    return randomFirstName + " " + randomLastName;
+  }
+  user.name = generateRandomName();
+  $(".ip").val(user.name);
+  $(".un").html(user.name);
   function getUserOnline() {
     $(".uo").html(window.users.length);
   }
