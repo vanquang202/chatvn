@@ -80,14 +80,14 @@
 
   $(".btsm").on("click", function () {
     if (user.name.trim() == "") {
-      toastr.warning("Bạn chưa nhập tên");
+      toastr.warning("You have not entered a name !");
       return;
     }
     echo.whisper("noti", { user: user });
     $(".btsmc").removeClass("d-none");
 
     $(".btsm").html(
-      `Đang ghép <img style="width: 50px;" src="https://www.phuriengrubber.vn/images/loading2.gif" alt="https://www.phuriengrubber.vn/images/loading2.gif">`
+      `Connecting <img style="width: 50px;" src="https://www.phuriengrubber.vn/images/loading2.gif" alt="https://www.phuriengrubber.vn/images/loading2.gif">`
     );
     user.isFind = true;
     user.isProcess = false;
@@ -98,7 +98,7 @@
   });
   $(".btsmc").on("click", function () {
     $(".btsmc").addClass("d-none");
-    $(".btsm").html("Ghép đôi");
+    $(".btsm").html("Connect");
     user.isFind = false;
     user.isProcess = false;
   });
@@ -106,7 +106,7 @@
     $(".ws").html("");
     function createRoomChat(uID) {
       $("#m").prepend(
-        `<p class="text-center text-m">Bạn đang chát với ${uFr.name}</p>`
+        `<p class="text-center text-m">You are chatting with ${uFr.name}</p>`
       );
       $(".leave").removeClass("d-none");
       idFr = uID;
@@ -133,7 +133,7 @@
           }
         })
         .listenForWhisper("ws-" + uID, (event) => {
-          $(".ws").html(event.name + " đang nhập ...");
+          $(".ws").html(event.name + " entering ...");
           setTimeout(() => {
             $(".ws").html("");
           }, 1000);
@@ -141,7 +141,7 @@
         .listenForWhisper("leave-" + uID, (event) => {
           uFr = null;
           idFr = null;
-          $(".ws").html("Đối phương đã ngắt kết nối !");
+          $(".ws").html("The opponent has disconnected !");
         });
       $(".leave").on("click", function () {
         window.location.href = "https://chat.jimdev.id.vn/";
@@ -170,11 +170,7 @@
                                             src="https://media1.giphy.com/media/nuoSzPYhqz3qCbSMMq/giphy.gif?cid=6c09b9526mi30nbhbes1zjc87o2g0oj2qve6oaq5ksyhrek4&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s"
                                             alt="https://media1.giphy.com/media/nuoSzPYhqz3qCbSMMq/giphy.gif?cid=6c09b9526mi30nbhbes1zjc87o2g0oj2qve6oaq5ksyhrek4&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s">
                                     </div> -->
-                                    
                                 </div>
-                                 
-                                 
-
                             </div>
                             `;
         } else {
@@ -184,7 +180,6 @@
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzOvBOBqc0SO0l2JE0Nd9wLbYlWehloZ4TA&s"
                                     alt="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzOvBOBqc0SO0l2JE0Nd9wLbYlWehloZ4TA&s">
                                 <div class="c flex-fill ">
-                                  
                                     <b>${chat.name}</b> 
                                     <div style="background: rgb(255, 118, 193);" class="cm shadow pb-0 p-2 rounded text-white">
                                          ${chat.text}
