@@ -1,0 +1,58 @@
+* {
+            font-family: "Rowdies", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        #c {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .c:hover>.ic {
+            display: flex !important;
+        }
+
+        .ic {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .icacr {
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+        }
+
+        .icacl {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .bg-m {
+            background: rgb(255, 7, 144);
+        }
+
+        .border-m {
+            border: 1px solid rgb(255, 7, 144);
+        }
+
+        .bg-m-800 {
+            background: rgb(255, 81, 177);
+
+        }
+
+        .bg-m-600 {
+            background: rgb(255, 118, 193);
+        }
+
+        .text-m {
+            color: rgb(255, 7, 144);
+        }
